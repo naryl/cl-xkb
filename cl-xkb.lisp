@@ -54,6 +54,9 @@
 (defcfun "xkb_state_new" :pointer
   (keymap :pointer))
 
+(defcfun "xkb_state_get_keymap" :pointer
+  (keymap :pointer))
+
 (defcfun "xkb_state_key_get_one_sym" :uint32
   (state :pointer)
   (keycode :uint32))
@@ -123,6 +126,12 @@
 (defcfun "xkb_state_unref" :void
   (state :pointer))
 
+;;; Random constants
+
+(defconstant +xkb-state-mods-depressed+ 1)
+(defconstant +xkb-state-mods-latched+ 2)
+(defconstant +xkb-state-mods-locked+ 4)
+(defconstant +xkb-state-layout-effective+ 128)
 
 ;;; Not XKB but they do deal with keysyms
 ;;; From ctypes.h
